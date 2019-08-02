@@ -5,66 +5,66 @@
 void print_num(int a[], int n);
 
 int main() {
-	int lottery[6] = {0}; // º¹±Ç ¹è¿­ 
-	int winning_num[7] = {0}; // ´çÃ· ¹è¿­ 
+	int lottery[6] = {0}; // ë³µê¶Œ ë°°ì—´ 
+	int winning_num[7] = {0}; // ë‹¹ì²¨ ë°°ì—´ 
 	int i,j, count=0, bonus=0;
 
 	srand((unsigned)time(NULL)); 
 	
-	// º¹±Ç ¼ıÀÚ ¼³Á¤ 
+	// ë³µê¶Œ ìˆ«ì ì„¤ì • 
 	for(i=0; i<6; i++) {
-		lottery[i] = 1+rand()%45; //[1,45] ³­¼ö ´ëÀÔ 
+		lottery[i] = 1+rand()%45; //[1,45] ë‚œìˆ˜ ëŒ€ì… 
 		for(j=0;j<i;j++) {
 			if(lottery[i] == lottery[j])
-				i--; //Áßº¹ Á¦°Å 
+				i--; //ì¤‘ë³µ ì œê±° 
 		}
 	}
-	printf("º¹±Ç ¹øÈ£ :");
+	printf("ë³µê¶Œ ë²ˆí˜¸ :");
 	print_num(lottery, 6);
 	printf("\n\n");
 
-	// ´çÃ· ¼ıÀÚ ¼³Á¤ 
+	// ë‹¹ì²¨ ìˆ«ì ì„¤ì • 
 	for(i=0; i<7; i++) {
 		winning_num[i] = 1+rand()%45;
 		for(j=0;j<i;j++)
 			if(winning_num[i] == winning_num[j])
-				 i--; //Áßº¹ Á¦°Å 
+				 i--; //ì¤‘ë³µ ì œê±° 
 	}
-	printf("´çÃ· ¹øÈ£ :");
+	printf("ë‹¹ì²¨ ë²ˆí˜¸ :");
 	print_num(winning_num, 6);
 	printf("+ %2d\n", winning_num[6]);
 
-	//´çÃ· È®ÀÎ 
+	//ë‹¹ì²¨ í™•ì¸ 
 	for(i=0;i<6;i++) 
 		for(j=0;j<6;j++) 
 			if(lottery[i] == winning_num[j])
 				count++;
 	
-	//º¸³Ê½º È®ÀÎ
+	//ë³´ë„ˆìŠ¤ í™•ì¸
 	for(i=0; i<6; i++)
 		if(lottery[i] == winning_num[7]) bonus = 1;
 	
 	printf("\n");
 	switch(count) {
 		case 6:
-			printf("100Á¡\n");
+			printf("100ì \n");
 			break;
 			
 		case 5:
-			if(bonus == 1)	printf("80Á¡\n");
-			if(bonus == 0)	printf("60Á¡\n");
+			if(bonus == 1)	printf("80ì \n");
+			if(bonus == 0)	printf("60ì \n");
 			break;
 			
 		case 4:
-			printf("40Á¡\n");
+			printf("40ì \n");
 			break;
 			
 		case 3:
-			printf("20Á¡\n");
+			printf("20ì \n");
 			break;
 			
 		default:
-			printf("Æ²·È½À´Ï´Ù.\n");
+			printf("í‹€ë ¸ìŠµë‹ˆë‹¤.\n");
 			break;
 	}
 	
